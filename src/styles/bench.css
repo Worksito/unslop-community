@@ -1,0 +1,20 @@
+/* Banc d'essai : volontairement sobre. Il montre chaque démo à la taille de sa carte, rien de plus. */
+:root { --paper: oklch(97% 0.006 55); --card: oklch(98.8% 0.0045 80); --ink: oklch(21% 0.012 38); --muted: oklch(47% 0.013 45); --rule: oklch(87% 0.009 55); }
+html, body { margin: 0; overflow-x: clip; background: var(--paper); color: var(--ink); font: 400 16px/1.5 ui-sans-serif, system-ui, sans-serif; }
+.bench { width: 1152px; max-width: calc(100% - 32px); margin: 48px auto; display: grid; gap: 24px; }
+.bench h1 { margin: 0; font-size: 32px; letter-spacing: -0.02em; }
+.bench p { margin: 0; color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 48px 32px; margin: 0; padding: 0; list-style: none; }
+.grid > li { grid-column: span var(--span, 6); display: grid; gap: 8px; }
+.grid small { color: var(--muted); }
+.stage { position: relative; display: grid; place-items: center; min-height: var(--stage-height, 320px); padding: 40px; overflow: clip; background: var(--stage-color, var(--card)); border: 1px solid var(--rule); border-radius: 8px; box-sizing: border-box; }
+.stage--tinted { padding: 0; place-items: stretch; }
+.stage__demo { width: 100%; display: grid; justify-items: start; }
+.stage--tinted .stage__demo { justify-items: stretch; align-items: stretch; }
+.stage .w-screen { width: 100%; }
+.stage .min-h-screen { min-height: 100%; }
+.apercu .stage { min-height: 100svh; border: 0; border-radius: 0; }
+/* Un pixel qui change sans cesse : Chrome n'envoie des images à l'enregistreur que si l'écran bouge. */
+.apercu::after { content: ""; position: fixed; inset: 0 auto auto 0; width: 1px; height: 1px; background: var(--ink); opacity: 0.02; animation: tick 500ms steps(2) infinite; }
+@keyframes tick { to { opacity: 0.03; } }
+@media (max-width: 60rem) { .grid { grid-template-columns: minmax(0, 1fr); } .grid > li { grid-column: 1 / -1; } }
