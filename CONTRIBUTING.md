@@ -1,79 +1,79 @@
-# Proposer un composant
+# Submit a component
 
-La vitrine accepte les composants de développeurs indépendants. Chaque composant garde le nom de son auteur sur sa carte et sur sa page.
+Unslop takes components from independent developers. Each component keeps its author's name on its card and on its page.
 
-## Ce qu'il faut fournir
+## What to send
 
-Trois fichiers. Les modèles à copier sont dans [`templates/`](templates/).
+Three files. Templates to copy are in [`templates/`](templates/).
 
-| Fichier | Où il va | Rôle |
+| File | Where it goes | What it does |
 |---|---|---|
-| Le composant | `src/library/<nom>.tsx` | Le code que les utilisateurs copient, tel quel, via le prompt |
-| La démo | `src/demos/<nom>.tsx` | Le composant avec un contenu d'exemple, montré dans la vitrine |
-| La fiche | une entrée dans `models` de `src/models.tsx` | Titre, auteur, taille de la carte, dépendances… |
+| The component | `src/library/<name>.tsx` | The code people copy, as is, through the prompt |
+| The demo | `src/demos/<name>.tsx` | The component with sample content, shown on the site |
+| The entry | an item in `models` in `src/models.tsx` | Title, author, card size, dependencies… |
 
-`<nom>` est le même pour les trois, en minuscules avec des tirets (`mon-composant`).
+`<name>` is the same for all three, lowercase with dashes (`my-component`).
 
-## Les règles de la maison
+## House rules
 
-Le site existe pour montrer des interfaces qui n'ont pas l'air générées. Un composant est accepté s'il respecte :
+The site exists to show interfaces that don't look generated. A component is accepted if it follows these rules:
 
-1. **Pas de dégradé violet**, ni de couleurs par défaut d'un framework (indigo de Tailwind, etc.). Une teinte choisie pour le composant.
-2. **Une police qui a un dessin**, jamais une police par défaut sans raison.
-3. **Un mouvement mesuré** : durées et courbes écrites dans le code. Seulement `transform` et `opacity` pour ce qui bouge.
-4. **Rien de caché au repos** : le contenu reste lisible sans JavaScript et sans animation.
-5. **Un bloc `prefers-reduced-motion`** qui affiche l'état final sans animation.
-6. **Pas de faux contenu** dans la démo : ni chiffres inventés, ni faux avis, ni faux logos.
-7. **Toutes les dépendances déclarées** dans `requires` (Tailwind, framer-motion, lucide-react…). Sans `requires`, le composant ne doit importer que React.
-8. **Un seul fichier** pour le composant, avec les couleurs, la police et les durées en variables en tête, pour qu'on l'adapte sans toucher au reste.
+1. **No purple gradient**, and no framework default colors (Tailwind indigo, etc.). Pick a hue for the component.
+2. **A typeface with character**, never a default font without a reason.
+3. **Measured motion**: durations and easing curves written in the code. Only `transform` and `opacity` for what moves.
+4. **Nothing hidden at rest**: content stays readable without JavaScript and without animation.
+5. **A `prefers-reduced-motion` block** that shows the final state without animation.
+6. **No fake content** in the demo: no made-up numbers, fake reviews or fake logos.
+7. **Every dependency declared** in `requires` (Tailwind, framer-motion, lucide-react…). Without `requires`, the component may only import React.
+8. **One file** for the component, with colors, font and durations as variables at the top, so people can adapt it without touching the rest.
 
-## Sécurité
+## Security
 
-Votre code s'exécute dans le navigateur des visiteurs. Il est refusé s'il :
+Your code runs in visitors' browsers. It is rejected if it:
 
-- envoie ou reçoit des données sur le réseau (`fetch`, `XMLHttpRequest`, `WebSocket`…) ;
-- exécute du code à partir d'une chaîne (`eval`, `new Function`) ou charge du code à la volée (`import()`) ;
-- lit ou écrit les cookies, le `localStorage` ou d'autres données du navigateur ;
-- redirige le visiteur, ouvre une page ou injecte un script ;
-- demande un accès sensible (presse-papiers, position, caméra, notifications) ;
-- appelle une adresse externe autre que Google Fonts, Fontshare, Wikimedia ou Unsplash (polices et images d'exemple).
+- sends or receives data over the network (`fetch`, `XMLHttpRequest`, `WebSocket`…);
+- runs code from a string (`eval`, `new Function`) or loads code on the fly (`import()`);
+- reads or writes cookies, `localStorage` or other browser data;
+- redirects the visitor, opens a page or injects a script;
+- asks for sensitive access (clipboard, location, camera, notifications);
+- calls any external address other than Google Fonts, Fontshare, Wikimedia or Unsplash (fonts and sample images).
 
-## Choisir la taille de la carte
+## Pick the card size
 
-La carte doit avoir la taille de ce qu'elle montre : ni grand vide autour d'un petit élément, ni démo écrasée.
+The card should be the size of what it shows: no big empty space around a small element, no squashed demo.
 
-| Ce que montre la démo | `span` (colonnes sur 12) | `stageHeight` |
+| What the demo shows | `span` (columns out of 12) | `stageHeight` |
 |---|---|---|
-| Un petit élément : police, lien, compteur, bouton | 4 | 260 à 320 |
-| Un titre, une barre, une carte | 5 à 7 | 320 à 400 |
-| Un formulaire, une galerie | 5 à 8 | 560 à 640 |
-| Un fond ou une section entière (hero) | 12 | 520 à 640 |
+| A small element: font, link, counter, button | 4 | 260 to 320 |
+| A headline, a bar, a card | 5 to 7 | 320 to 400 |
+| A form, a gallery | 5 to 8 | 560 to 640 |
+| A background or a full section (hero) | 12 | 520 to 640 |
 
-Sur une même rangée, les cartes ont la même hauteur : combinez des largeurs qui font 12 (4 + 4 + 4, 5 + 7, 12).
+Cards in the same row share a height: combine widths that add up to 12 (4 + 4 + 4, 5 + 7, 12).
 
-Si la démo a son propre fond (noir, bleu…), indiquez-le dans `stageColor` : tout le cadre prend cette couleur et la démo va jusqu'aux bords.
+If the demo has its own background (black, blue…), set it in `stageColor`: the whole frame takes that color and the demo runs to the edges.
 
-## Vérifier avant d'envoyer
+## Check before sending
 
-Avec le site lancé (`npm run dev`) :
+With the site running (`npm run dev`):
 
 ```bash
-npm run check-model -- mon-composant
-npm run previews -- mon-composant
+npm run check-model -- my-component
+npm run previews -- my-component
 ```
 
-Le premier vérifie le format : fichiers présents, fiche complète, imports déclarés, mouvement réduit. Le second filme la démo et crée sa vidéo d'aperçu dans `public/previews/`.
+The first checks the format: files present, complete entry, declared imports, reduced motion. The second films the demo and creates its preview video in `public/previews/`.
 
-## Envoyer : une pull request
+## Send it: a pull request
 
-1. Faites un fork du dépôt et une branche à votre nom de composant.
-2. Ajoutez vos trois fichiers et les aperçus générés (`public/previews/<slug>.mp4` et `.jpg`).
-3. Ouvrez une pull request et cochez la liste du modèle.
+1. Fork the repository and create a branch named after your component.
+2. Add your three files and the generated previews (`public/previews/<slug>.mp4` and `.jpg`).
+3. Open a pull request and tick the template's checklist.
 
-**Ce qui se passe ensuite, automatiquement :** le site est compilé, votre composant est vérifié (format et sécurité) et filmé. La vidéo est jointe à l'exécution, et une version de prévisualisation du site est publiée. Si quelque chose ne va pas, la liste des erreurs s'affiche dans la pull request.
+**What happens next, automatically:** the site is built, your component is checked (format and security) and filmed. The video is attached to the run, and a preview version of the site is published. If something is wrong, the list of errors shows up in the pull request.
 
-**Puis une relecture humaine**, avant publication : le code finit chez les visiteurs, donc rien n'est publié sans avoir été lu.
+**Then a human review**, before publishing: the code ends up in visitors' browsers, so nothing goes live without being read.
 
-## Licence
+## License
 
-En proposant un composant, vous confirmez qu'il est votre travail original (ou que vous avez le droit de le redistribuer, source et licence indiquées), et vous acceptez qu'il soit publié sur la vitrine et copié par ses utilisateurs **sous licence MIT**, avec votre nom comme auteur.
+By submitting a component, you confirm it is your original work (or that you have the right to redistribute it, with source and license given), and you agree that it is published on Unslop and copied by its users **under the MIT license**, with your name as author.

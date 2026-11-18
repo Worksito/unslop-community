@@ -1,37 +1,37 @@
-// Mon composant : une phrase qui dit ce qu'il fait et comment il bouge.
-// Auteur : Prénom Nom (https://mon-site.fr)
+// My component: one sentence on what it does and how it moves.
+// Author: First Last (https://my-site.com)
 //
-// Règles du format (voir CONTRIBUTING.md) :
-// - un seul fichier, qui n'importe que React et les dépendances déclarées dans la fiche ;
-// - couleurs, police et durées en variables CSS en tête, pour qu'on adapte sans toucher au reste ;
-// - un bloc prefers-reduced-motion qui affiche l'état final sans animation ;
-// - le contenu reste visible sans JavaScript et sans animation.
+// Format rules (see CONTRIBUTING.md):
+// - one file, importing only React and the dependencies declared in the entry;
+// - colors, font and durations as CSS variables at the top, so people adapt it without touching the rest;
+// - a prefers-reduced-motion block that shows the final state without animation;
+// - content stays visible without JavaScript and without animation.
 import type { CSSProperties } from "react";
 
 const css = `
-.mon-composant {
-  --mon-composant-ink: oklch(22% 0.02 40);
-  --mon-composant-font: "Fraunces", Georgia, serif;
-  --mon-composant-duree: 700ms;
+.my-component {
+  --my-component-ink: oklch(22% 0.02 40);
+  --my-component-font: "Fraunces", Georgia, serif;
+  --my-component-duration: 700ms;
   margin: 0;
-  font-family: var(--mon-composant-font);
-  color: var(--mon-composant-ink);
-  animation: mon-composant-in var(--mon-composant-duree) cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  font-family: var(--my-component-font);
+  color: var(--my-component-ink);
+  animation: my-component-in var(--my-component-duration) cubic-bezier(0.2, 0.7, 0.1, 1) both;
 }
-@keyframes mon-composant-in { from { opacity: 0; transform: translateY(8px); } }
+@keyframes my-component-in { from { opacity: 0; transform: translateY(8px); } }
 @media (prefers-reduced-motion: reduce) {
-  .mon-composant { animation: none; }
+  .my-component { animation: none; }
 }
 `;
 
-type MonComposantProps = { texte: string; style?: CSSProperties };
+type MyComponentProps = { text: string; style?: CSSProperties };
 
-export function MonComposant({ texte, style }: MonComposantProps) {
+export function MyComponent({ text, style }: MyComponentProps) {
   return (
     <>
       <style>{css}</style>
-      <p className="mon-composant" style={style}>
-        {texte}
+      <p className="my-component" style={style}>
+        {text}
       </p>
     </>
   );

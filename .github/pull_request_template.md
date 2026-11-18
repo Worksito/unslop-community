@@ -1,17 +1,17 @@
-## Le composant
+## The component
 
-- **Nom :** <!-- ex. Titre qui se pose -->
-- **Ce qu'il fait, en une phrase :**
-- **Fichiers :** `src/library/…tsx`, `src/demos/…tsx`, la fiche dans `src/models.tsx`, et ses aperçus dans `public/previews/`
+- **Name:** <!-- e.g. Settling headline -->
+- **What it does, in one sentence:**
+- **Files:** `src/library/…tsx`, `src/demos/…tsx`, the entry in `src/models.tsx`, and its previews in `public/previews/`
 
-## Avant d'envoyer
+## Before sending
 
-- [ ] `npm run check-model -- mon-composant` passe sans erreur
-- [ ] `npm run previews -- mon-composant` a généré la vidéo et l'image
-- [ ] Le composant respecte les règles de la maison (voir CONTRIBUTING.md)
-- [ ] **Ce composant est mon travail original**, ou j'ai le droit de le redistribuer (source et licence indiquées ci-dessous)
-- [ ] **J'accepte qu'il soit publié sur la vitrine et copié par ses utilisateurs sous licence MIT**, avec mon nom comme auteur
+- [ ] `npm run check-model -- my-component` passes with no errors
+- [ ] `npm run previews -- my-component` generated the video and the image
+- [ ] The component follows the house rules (see CONTRIBUTING.md)
+- [ ] **This component is my original work**, or I have the right to redistribute it (source and license given below)
+- [ ] **I agree that it is published on Unslop and copied by its users under the MIT license**, with my name as author
 
-## Source et licence (si ce n'est pas entièrement de vous)
+## Source and license (if it isn't entirely yours)
 
-<!-- lien vers l'original et sa licence -->
+<!-- link to the original and its license -->
